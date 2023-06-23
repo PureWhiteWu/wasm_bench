@@ -1,3 +1,4 @@
+#[cfg(not(target_arch = "wasm32"))]
 fn main() {
     let mut buf = wasm_bench::BOOK_DATA.to_owned();
     let mut bufs = Vec::with_capacity(100000);
@@ -13,3 +14,7 @@ fn main() {
         println!("{:?}", start.elapsed() / 100000);
     }
 }
+
+#[cfg(target_arch = "wasm32")]
+fn main() {}
+

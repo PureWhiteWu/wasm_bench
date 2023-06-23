@@ -1,3 +1,4 @@
+#[cfg(not(target_arch = "wasm32"))]
 fn main() {
     let mut buf = wasm_bench::FEED_REQUEST_DATA.to_owned();
     unsafe {
@@ -11,3 +12,7 @@ fn main() {
         println!("{:?}", start.elapsed() / 10000);
     }
 }
+
+#[cfg(target_arch = "wasm32")]
+fn main() {}
+

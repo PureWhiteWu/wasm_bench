@@ -1,3 +1,4 @@
+#[cfg(not(target_arch = "wasm32"))]
 fn main() {
     unsafe {
         let mut buf = wasm_bench::TWITTER_DATA.to_owned();
@@ -14,3 +15,6 @@ fn main() {
         println!("{:?}", start.elapsed() / 1000);
     }
 }
+
+#[cfg(target_arch = "wasm32")]
+fn main() {}
